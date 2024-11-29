@@ -32,3 +32,28 @@ def plot_global(field,lons,lats,label):
   #ax.set_title()
 
   plt.show()
+
+
+# Plotting a field in southpolar stereographic projection
+def plot_regional(field,x,y,label):
+
+  # create figure, axes instances.
+  fig = plt.figure(figsize=(10, 5))
+  #ax = fig.add_axes([0.05,0.05,0.9,0.9])
+  ax = fig.add_subplot(1, 1, 1, projection=ccrs.SouthPolarStereo())
+
+  #ax.stock_img()
+  ax.coastlines(lw=0.5,color='k',resolution='110m')
+
+  im1 = ax.pcolormesh(x,y,field,cmap=plt.cm.RdBu,shading='nearest')
+
+  ax.gridlines(lw=0.5,color='grey')
+
+  # add colorbar
+  cb = fig.colorbar(im1,ax=ax,orientation="vertical",format='$%.1f$',shrink=0.6)
+  cb.set_label(label)
+
+  # add a title.
+  #ax.set_title()
+
+  plt.show()
