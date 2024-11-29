@@ -1,36 +1,34 @@
 # Plotting 
 
-from mpl_toolkits.basemap import Basemap
+import cartopy.crs as ccrs
 from netCDF4 import Dataset, date2index
 import numpy as np
 import matplotlib.pyplot as plt
 
 # Plotting a global field
-def plot_global(field,lons,lats):
+def plot_global(field,lons,lats,label):
 
   # create figure, axes instances.
-  fig = plt.figure()
-  ax = fig.add_axes([0.05,0.05,0.9,0.9])
-  
-  # create Basemap instance.
-  # coastlines not used, so resolution set to None to skip
-  # continent processing (this speeds things up a bit)
-  m = Basemap(projection='kav7',lon_0=0,resolution=None)
-  
-  # draw line around map projection limb.
-  # color background of map projection region.
-  # missing values over land will show up this color.
-  m.drawmapboundary(fill_color='0.3')
-  
-  # plot field
-  im1 = m.pcolormesh(lons,lats,field,cmap=plt.cm.jet,latlon=True)
-  
-  # draw parallels and meridians, but don't bother labelling them.
-  m.drawparallels(np.arange(-90.,99.,30.))
-  m.drawmeridians(np.arange(-180.,180.,60.))
-  
+  fig = plt.figure(figsize=(10, 5))
+  #ax = fig.add_axes([0.05,0.05,0.9,0.9])
+  ax = fig.add_subplot(1, 1, 1, projection=ccrs.Robinson())
+    
+  # make the map global rather than have it zoom in to
+  # the extents of any plotted data
+  #ax.set_global()
+
+  #ax.stock_img()
+  ax.coastlines(lw=0.5,color='k')
+
+  im1 = ax.pcolormesh(lons,lats,field,cmap=plt.cm.RdBu,transform=ccrs.PlateCarree(),shading='nearest')
+
+  ax.gridlines(lw=0.5,color='grey')
+
   # add colorbar
-  cb = m.colorbar(im1,"bottom", size="5%", pad="2%")
+  cb = fig.colorbar(im1,ax=ax,orientation="vertical",format='$%.1f$',shrink=0.6)
+  cb.set_label(label)
+    
   # add a title.
-  #ax.set_title('SST and ICE analysis for %s'%date)
+  #ax.set_title()
+
   plt.show()
