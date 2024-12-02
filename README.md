@@ -19,7 +19,7 @@ This is model output from a coupled PISM-VILMA simulation with forcing and 175 y
 but here interactively coupled every model year to the GIA and sea-level model VILMA, according to
 
 - Albrecht, T., Bagge, M., and Klemann, V.: Feedback mechanisms controlling Antarctic glacial-cycle dynamics simulated with a coupled ice sheet–solid Earth model, The Cryosphere, 18, 4233–4255, https://doi.org/10.5194/tc-18-4233-2024 , 2024.
-PISM ice sheet simulations were performed on a Antarctic polar stereographic projected (https://epsg.io/3031) ISMIP grid with 8km resolution (761x761). Globally gravitationally consistent and mass conserving VILMA simulations were performed on a n256 Gauss-Legendre grid (1024x512) for a 3D Earth structure, based on
+PISM ice sheet simulations were performed on a Antarctic polar stereographic projected (https://epsg.io/3031) ISMIP grid with 8km resolution (761x761). Globally gravitationally consistent and mass conserving VILMA simulations were performed on a n256 Gauss-Legendre grid (1024x512) for a 3D Earth structure (’v_0.4_s16’), based on
 
 - Bagge, M., Klemann, V., Steinberger, B., Latinovi ́ c, M., and Thomas, M.: Glacial-Isostatic Adjustment Models Using Geodynamically Constrained 3D Earth Structures, Geochem. Geophys. Geosyst., 22, e2021GC009853, https://doi.org/10.1029/2021GC009853 , 2021.
 
